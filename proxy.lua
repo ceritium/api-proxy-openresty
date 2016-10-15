@@ -1,9 +1,6 @@
-local headers = ngx.req.get_headers(0)
-local endpoint = headers["X-Proxy-Endpoint"]
-local path = headers["X-Proxy-Path"]
-local query = headers["X-Proxy-Query"]
-
-local target = endpoint
+local path = ngx.var.uri
+local query = ngx.var.query_string
+local target = 'http://musicbrainz.org/'
 
 if path then
   target = target .. path
